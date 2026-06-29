@@ -15,6 +15,7 @@ def check_winner(board, player):
         if all(cell == player for cell in row):
             return True
     # Check columns
+    # On line 19, I noticed that the function only considers a range of 3. I wondered whether this could be changed in order to make it dynamic instead of static. For example, checking for the length of the first board and looping over it could allow it to adapt to any width, rather than just three columns, and this could help if the game were to be expanded. Would this be something you are interested in exploring?
     for col in range(3):
         if all(board[row][col] == player for row in range(3)):
             return True
@@ -26,6 +27,7 @@ def check_winner(board, player):
 
 def is_full(board):
     """Check if the board is full (draw)."""
+# On line 31, I noticed that the return command evaluates the entire board. However, I wondered whether this could be changed to examine the code by each individual row and exit the loop when there is an empty space. For example, this could be done with a "for row" command, then a subsequent "for cell" command, and an "if" command for when the cell is blank. Could this be something to possibly integrate?
     return all(cell != " " for row in board for cell in row)
 
 def get_move(player, board):
@@ -34,6 +36,7 @@ def get_move(player, board):
         try:
             move = input(f"Player {player}, enter your move (row and column: 1 1 for top-left): ")
             row, col = map(int, move.split())
+# On line 39, I noticed that the if function is correct, but long. I wondered whether it could be made more concise. An example would be to use an 'if not' command with a less than comparison between the numbers. Would that potentially work as a concise change?
             if row < 1 or row > 3 or col < 1 or col > 3:
                 print("Invalid position! Enter numbers between 1 and 3.")
                 continue
